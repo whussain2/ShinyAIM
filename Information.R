@@ -37,7 +37,7 @@ column(8,
           tags$ul(
             tags$li("Files must have header rows"),
             tags$li("Column names of the files should match with sample file names, order of the columns is not important."),
-            tags$li("Day represents timepoint and can be timepoint or different trait in users file."),
+            tags$li("timepoint represents the time or day at which data was collected and it can be different trait in users file,but make sure column name is as timepoint."),
             tags$li("chrom: represents number of chromosomes."),
             tags$li("pos: represents position of markers."),
             tags$li("P: represents p value for markers."),
