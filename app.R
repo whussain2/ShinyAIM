@@ -1,19 +1,18 @@
 ## ==================================================================================== ##
 # ShinyAIM for visualization of interactive Manhatten plots of longitudnal GWAS data.
-# Copyright (C) 2018  Waseem Hussain
-# 
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#Copyright (c) 2000-2006, The Perl Foundation. 
+#This program is free software: you can redistribute it and/or modify
+# it under the terms of the Artistic License 2.0.
+#This license establishes the terms under which a given free software Package may be copied,
+#modified, distributed, and/or redistributed. The intent is that the Copyright Holder maintains
+#some artistic control over the development of that Package while still keeping the Package
+#available as open source and free software.
+#You are always permitted to make arrangements wholly outside of this license directly with the
+#Copyright Holder of a given Package. If the terms of this license do not permit the full use that
+#you propose to make of the Package, you should contact the Copyright Holder and seek a
+#different licensing arrangement.
+# For more details see Artistic License 2.0. at https://opensource.org/licenses/Artistic-2.0
 # 
 # You may contact the author of this code, Waseem Hussain, at <waseem.hussain@ unl.edu>
 # You can run the application by clicking the 'Run App' button above in R studio.
