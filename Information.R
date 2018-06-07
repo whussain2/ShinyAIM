@@ -81,7 +81,7 @@ column(8,
       tags$p("Enjoy, and please give us valuable feedback.", style = "font-size: 18px"),
       hr(),
       tags$div(
-        tags$footer('Copyright (C) 2018, code licensed under Artistic License 2.0'),
+        tags$footer('Copyright (c) 2000-2006, The Perl Foundation, code licensed under Artistic License 2.0'),
         style = "font-size: 16px")
 ))
 
