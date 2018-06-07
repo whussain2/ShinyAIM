@@ -66,7 +66,7 @@
       sidebarPanel(width = 3,
                    
 # Data upload button is created
-      fileInput('file1', 'Upload CSV data file for Manhatten Plot:',
+      fileInput('file1', 'Upload data file for Interactive Manhatten Plot:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
 
 # Check wheather file has header or not
@@ -108,7 +108,7 @@
  # Data upload button is created
         
       sidebarPanel(width = 3,
-                     fileInput('file2', 'Upload CSV data file for Manhatten Plot:',
+                     fileInput('file2', 'Upload data file for Combined Manhatten Plot:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
                    
 # Check wheather file has header or not
@@ -152,7 +152,7 @@
     sidebarLayout(
         
     sidebarPanel(width = 3,
-                     fileInput('file3', 'Upload CSV data file:',
+                     fileInput('file3', 'Upload data file:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
                      
     checkboxInput('header', 'Data file has variable names as column headers.', TRUE),

@@ -1,12 +1,12 @@
 column(8,
        tags$body(
          h2(strong('General information')),
-         #br(),
+         hr(),
          tags$div(
            tags$p('ShinyAIM allows users to dynamically view and interpret longitudinal GWAS results.
                   '), 
            style = "font-size: 18px;"),
-         
+         hr(),
         h3(strong('Features of the Application: Interactive data visualization')),
          
         tags$div(
@@ -22,16 +22,20 @@ column(8,
            tags$li("Phenotypic Data Visualization: Interactive Histograms, Density Plots, and Box Plots.")),
            style = "font-size: 18px")
          ),
-    
+    hr(),
       h3(strong('Guidelines')),
       tags$div(
         
         tags$ol(
           tags$li("The application has three main tabs including (a) Interactive Manhattan Plots, (b) Combined Manhattan Plots, and (3) Phenotypic Data Visualization."), 
-          tags$li("The application accepts CSV file format. Users can see the sample files available in GitHub folder (insert link) named as samplefile1_manhatten (for Manhatten and combined Manhatten plots) and 
-          samplefile2_phenotypic (for phenotyic data visualization. Also, the snapshot of file format for Interactive Manhatten plots, Combined Manhatten plot and Phenotypic data
-                  visulaization is shown below:"), 
+          tags$li("The application accepts text/csv,text/comma-separated-values,text/plainfile format. Users can see the sample files available in GitHub folder:"), 
+          tags$a(href="https://github.com/whussain2/ShinyAIM/blob/master/Samplefiles/samplefile1_manhatten.csv", "Samplefile1:Manhatten Plots"),
+          br(),
+          tags$a(href="https://github.com/whussain2/ShinyAIM/blob/master/Samplefiles/samplefile2_phenotypic.csv", "Samplefile2: Phenotypic Data"),
+          tags$li("The screenshot of sample files for Interactive Manhatten Plots, Combined Manhatten Plots and Phenotypic Data Visualization  is also shown below:"),
+          br(),
           img(src = 'dataformat.png', align = "center", width = "100%", height = "100%"),
+          br(),
           tags$ul(
             tags$li("Files must have header rows"),
             tags$li("Column names of the files should match with sample file names, order of the columns is not important."),
@@ -49,6 +53,14 @@ column(8,
     
           
         ), style = "font-size: 16px; line-height: 1.7;"),
+    hr(),
+    
+    
+    h2(strong('Shiny Application is hosted at:')),
+     tags$div(
+      tags$a(href="https://github.com/whussain2/ShinyAIM", "ShinyAIM:Website"),
+      style = "font-size: 18px;"),
+    hr(),
       
       h2(strong('Source Code and Sample Files')),
       
@@ -60,13 +72,13 @@ column(8,
       tags$div(
         tags$p(strong('How to cite ShinyAIM:'), "Waseem Hussain, Malachy Campbell, Harkamal Walia, and Gota Morota, University of Nebraska Lincoln (manuscript under preperation)"), 
         style = "font-size: 18px"),
-      
+      hr(),
       h3(strong('Contact Information and Help:')),
       tags$div(
         tags$p('Waseem Hussain - waseem.hussain@unl.edu; waseemhussain907@gmail.com, Gota Morota  -morota@unl.edu.'), 
         style = "font-size: 18px"),
-      tags$p("Enjoy, and please give us feedback.", style = "font-size: 18px"),
-      br(),
+      tags$p("Enjoy, and please give us valuable feedback.", style = "font-size: 18px"),
+      hr(),
       tags$div(
         tags$footer('Copyright (C) 2018, code licensed under Artistic License 2.0'),
         style = "font-size: 16px")
