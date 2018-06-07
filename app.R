@@ -86,7 +86,7 @@
 
 # Sliderinput button to allow users to choose significance level
       sliderInput("logpvalue", "Choose -log pValue:",
-                                 min = -log10(0.001), max = -log10(0.00000001),
+                                 min = -log10(0.01), max = -log10(0.00000001),
                                  value = -log10(0.00001), step=0.5)
                      
         ),
@@ -134,7 +134,7 @@
 
      sliderInput("ncol", "Number of columns for grid plot:",
                                  min = 2, max =10,
-                                 value =5, step=1)
+                                 value =4, step=1)
         ),
 
 # main panel reserves a for the plot
