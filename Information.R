@@ -1,13 +1,13 @@
 column(8,
        tags$body(
-         h2(strong('General information')),
+         h2(strong('General Information')),
          hr(),
          tags$div(
            tags$p('ShinyAIM allows users to dynamically view and interpret longitudinal GWAS results.
                   '), 
            style = "font-size: 18px;"),
          hr(),
-        h3(strong('Features of the Application: Interactive data visualization')),
+        h3(strong('Features of the Application: Interactive Data Visualization')),
          
         tags$div(
         img(src = 'image.png', align = "center", width = "100%", height = "100%")
@@ -56,7 +56,8 @@ column(8,
     hr(),
     
     
-    h2(strong('Shiny Application is hosted at:')),
+    h2(strong('Shiny Application is Hosted at:'),
+       style = "font-size: 16px"),
      tags$div(
       tags$a(href="https://github.com/whussain2/ShinyAIM", "ShinyAIM:Website"),
       style = "font-size: 18px;"),
