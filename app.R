@@ -66,15 +66,15 @@
       sidebarPanel(width = 3,
                    
 # Data upload button is created
-      fileInput('file1', 'Upload data file for Interactive Manhatten Plot:',
+      fileInput('file1', 'Upload Data File for Interactive Manhatten Plots:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
 
 # Check wheather file has header or not
 
-      checkboxInput('header', 'Data file has variable names as column headers.', TRUE),
+      checkboxInput('header', 'Data File has Variable Names as Column Headers.', TRUE),
 
 #Data file seperator               
-      radioButtons('sep', 'Data File separator value:',
+      radioButtons('sep', 'Data File Separator Value:',
                                   c(Comma=',',
                                     Semicolon=';',
                                     Tab='\t')
@@ -83,19 +83,36 @@
 # uioutput creates the button where user can control the input of file
 
       uiOutput("manOutput"),
+      uiOutput("sumOutput"),
 
 # Sliderinput button to allow users to choose significance level
       sliderInput("logpvalue", "Choose -log pValue:",
                                  min = -log10(0.01), max = -log10(0.00000001),
-                                 value = -log10(0.00001), step=0.5)
-                     
-        ),
+                                 value = -log10(0.00001), step=0.5),
+# Sliderinput button to allow users to display top significant SNPs
+conditionalPanel(
+  # Displays the SNPs with highest -logpValue
+  condition = "input.sum",
+      sliderInput("p", "How many Significant SNPs to be Displayed in Table:",
+                                 min = 1, max =80,
+                                  value = 2, step=1))
+
+                                   ),
+
 
 # main panel reserves space for the plot 
 
-      mainPanel(align="center",
-                  plotlyOutput("mymanhatten")
-        )
+      mainPanel(h4("Interactive Manhatten Plot", align = "center"),
+          plotlyOutput("mymanhatten"),
+          br(),
+          hr(),
+          conditionalPanel(
+            # Displays the SNPs with highest -logpValue
+            condition = "input.sum", 
+            tags$h4("Markers Arranged in Significance Order", align = "center"),
+            verbatimTextOutput("summary"))
+      )
+          
       )),
 
 
@@ -108,13 +125,13 @@
  # Data upload button is created
         
       sidebarPanel(width = 3,
-                     fileInput('file2', 'Upload data file for Combined Manhatten Plot:',
+                     fileInput('file2', 'Upload Data File for Combined Manhatten Plot:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
                    
 # Check wheather file has header or not
 
-      checkboxInput('header', 'Data file has variable names as column headers.', TRUE),
-                     radioButtons('sep', 'Data File separator value:',
+      checkboxInput('header', 'Data File has Variable Names as Column Headers.', TRUE),
+                     radioButtons('sep', 'Data File Separator Value:',
                                   c(Comma=',',
                                     Semicolon=';',
                                     Tab='\t')
@@ -127,12 +144,12 @@
 # Sliderinput button to allow users to choose significance level
 
       sliderInput("pvalue", "Choose -log pValue:",
-                                 min = -log10(0.001), max = -log10(0.00000001),
+                                 min = -log10(0.01), max = -log10(0.00000001),
                                  value = -log10(0.00001), step=0.5),
 
 # Sliderinput button to allow users to choose the number of columns in grid plot
 
-     sliderInput("ncol", "Number of columns for grid plot:",
+     sliderInput("ncol", "Select Number of Columns for Grid Plot:",
                                  min = 2, max =10,
                                  value =4, step=1)
         ),
@@ -152,10 +169,10 @@
     sidebarLayout(
         
     sidebarPanel(width = 3,
-                     fileInput('file3', 'Upload data file:',
+                     fileInput('file3', 'Upload Data File:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
                      
-    checkboxInput('header', 'Data file has variable names as column headers.', TRUE),
+    checkboxInput('header', 'Data File has Variable Names as Column Headers.', TRUE),
     radioButtons('sep', 'Data File separator value:',
                                   c(Comma=',',
                                     Semicolon=';',
@@ -208,7 +225,7 @@
     output$manOutput <- renderUI({
     if (is.null(read1()))
       return(NULL)
-    selectInput("man", "Choose Time Point", unique(read1()$timepoint), selected = "")
+    selectInput("man", "Choose Time Point or Phenotypes", unique(read1()$timepoint), selected = "")
     })
     
 # Make the data reactive and filter it based on timepoints in the uploaded file
@@ -232,10 +249,29 @@
     manhattanly(data1(), chr="chrom", snp="marker", bp="pos", p="P", col=c("#D2691E","#800080","#6495ED","#9ACD32"), 
                 point_size=7,showlegend = FALSE,xlab = "Chromosome", ylab = "-log10(p)",
                 suggestiveline = input$logpvalue, suggestiveline_color = "blue", 
-                suggestiveline_width = 2, genomewideline =FALSE, title = "Interacative Manhatten Plot")
+                suggestiveline_width = 2, genomewideline =FALSE, title = "")
     
   })
     
+# Display the SNPs or marker with highest significant -logpValue
+  
+    output$sumOutput <- renderUI({
+      if (is.null(read1()))
+        return(NULL)
+      checkboxInput("sum", "Display in Table Significant SNPs", FALSE)
+    })
+    
+# Make data reactive
+    data5<-reactive({
+      if (is.null(read1()))
+        return(NULL)
+      read1()%>%
+        filter(timepoint==unique(input$man))
+    })
+    output$summary <- renderPrint({
+      data6<-arrange(data5(), P)
+      data6[1:input$p,]
+    })
 #================================COMBINED/GRID MANHATTEN PLOTS==========================================#
 # read the file if uploaded otherwise return null
     
@@ -342,7 +378,7 @@
     })
     
     output$timeOutput <- renderUI({
-    selectInput("timepoint", "Choose Time Point", unique(read3()$timepoint), selected = NULL)
+    selectInput("timepoint", "Choose Time Point or Phenotypes", unique(read3()$timepoint), selected = NULL)
   })
 # Make data reactive
     
