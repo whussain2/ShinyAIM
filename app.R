@@ -37,7 +37,7 @@
   
       headerPanel(h1("ShinyAIM: Shiny Application for Interactive Manhatten Plots", style = "font-family: 'Trattatello', fantasy; font-weight: 500; line-height: 1.1; color: #D2691E;", align = "center")),
 
-  # Blocks printing any errors in the Shiny UI.
+# Blocks printing any errors in the Shiny UI.
   
      tags$style(type="text/css",
              ".shiny-output-error { visibility: hidden; }",
@@ -66,6 +66,7 @@
       sidebarPanel(width = 3,
                    
 # Data upload button is created
+
       fileInput('file1', 'Upload Data File for Interactive Manhatten Plots:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
 
@@ -73,7 +74,8 @@
 
       checkboxInput('header', 'Data File has Variable Names as Column Headers.', TRUE),
 
-#Data file seperator               
+#Data file seperator 
+
       radioButtons('sep', 'Data File Separator Value:',
                                   c(Comma=',',
                                     Semicolon=';',
@@ -86,19 +88,20 @@
       uiOutput("sumOutput"),
 
 # Sliderinput button to allow users to choose significance level
+
       sliderInput("logpvalue", "Choose -log pValue:",
                                  min = -log10(0.01), max = -log10(0.00000001),
                                  value = -log10(0.00001), step=0.5),
 # Sliderinput button to allow users to display top significant SNPs
+
 conditionalPanel(
-  # Displays the SNPs with highest -logpValue
+# Displays the SNPs with highest -logpValue
   condition = "input.sum",
       sliderInput("p", "How many Significant SNPs to be Displayed in Table:",
                                  min = 1, max =80,
                                   value = 2, step=1))
 
                                    ),
-
 
 # main panel reserves space for the plot 
 
@@ -107,7 +110,9 @@ conditionalPanel(
           br(),
           hr(),
           conditionalPanel(
-            # Displays the SNPs with highest -logpValue
+            
+# Displays the SNPs in table arranged with highest -logpValue 
+            
             condition = "input.sum", 
             tags$h4("Markers Arranged in Significance Order", align = "center"),
             verbatimTextOutput("summary"))
@@ -119,7 +124,7 @@ conditionalPanel(
  #============================MANHATTEN GRID PLOTS=================================================#
     
       tabPanel(
-      h4("Manhatten Grid Plots", style = "color: #800080;"),
+      h4("Manhatten Grid Plot", style = "color: #800080;"),
       sidebarLayout(
 
  # Data upload button is created
@@ -140,7 +145,7 @@ conditionalPanel(
 # uioutput creates the button where user can control the input of file
 
       uiOutput("gridOutput"),
-
+      
 # Sliderinput button to allow users to choose significance level
 
       sliderInput("pvalue", "Choose -log pValue:",
@@ -154,14 +159,47 @@ conditionalPanel(
                                  value =4, step=1)
         ),
 
+
 # main panel reserves a for the plot
 
     mainPanel(align="center",
-                  tags$h2("", align = "center"),
-                  plotOutput("mygrid", height=700))
+                  tags$h4("Combined Manhatten Plot", align = "center"),
+                  plotOutput("mygrid", height=800))
       )),
 
+
+#============================Compare only Significant Markers Across Time Points========================================#
+tabPanel(
+  h4("Comparison Significant Markers", style = "color: #800080;"),
+  sidebarLayout(
     
+# Frame side bar layout
+    
+    sidebarPanel(width = 3,
+                 #fileInput('file3', 'Upload Data File for Combined Manhatten Plot:',
+                           #accept=c('text/csv','text/comma-separated-values,text/plain')),
+                 
+                 # Check wheather file has header or not
+                 
+                 #checkboxInput('header', 'Data File has Variable Names as Column Headers.', TRUE),
+                 #radioButtons('sep', 'Data File Separator Value:',
+                            #  c(Comma=',',
+                               # Semicolon=';',
+                                #Tab='\t')
+                 uiOutput("signiOutput"),
+                 hr(),
+                 tags$h5("To see the interactive plot and compare the significant markers across timepoints or phenotypes, upload the data file in Manhatten Grid Plots data browse box. It uses the same data file. To modify or change the plot based on significant p value, directly enter the value by typing in the box", align = "center")
+                 ),
+                
+    
+    
+ # main panel reserves a space for the plot
+    
+    mainPanel(align="center",
+              tags$h4("Compare Significant Markers Across Timepoints", align = "center"),
+              plotlyOutput("mysig", height=600))
+  )),
+
 #============================PHENOTYPIC DATA VISUALIZATION========================================#
     
     tabPanel(
@@ -169,7 +207,7 @@ conditionalPanel(
     sidebarLayout(
         
     sidebarPanel(width = 3,
-                     fileInput('file3', 'Upload Data File:',
+                     fileInput('file4', 'Upload Data File:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
                      
     checkboxInput('header', 'Data File has Variable Names as Column Headers.', TRUE),
@@ -192,6 +230,7 @@ conditionalPanel(
     )        
   )
 )
+  
 
       
 # Choose the size of shiny app
@@ -244,6 +283,7 @@ conditionalPanel(
       return(NULL)
     if (is.null(input$man))
       return()
+      
 # please see the details on Manhattanly package for this code http://sahirbhatnagar.com/manhattanly/
     
     manhattanly(data1(), chr="chrom", snp="marker", bp="pos", p="P", col=c("#D2691E","#800080","#6495ED","#9ACD32"), 
@@ -288,14 +328,14 @@ conditionalPanel(
 #timepoint as factor
     
     data2$timepoint<-as.factor(data2$timepoint)
-   })
+    })
     
 # Most of this code is adapted from https://www.r-graph-gallery.com/wp-content/uploads/2018/02/Manhattan_plot_in_R.html
-# Here loop is created for each time point in the file to run the code
+# Here we modify the code as per requriement.
+# First loop is created for each time point in the file to run the code
     data2<-reactive ({
-    days<- as.factor(unique(read2()$timepoint))
+    days<- as.factor(unique(read2()$timepoint)) # treat timepoint as factor
     for(i in 1:length(days)){
-      #day1 <- data[which(data$timepoint==days[i]),]
     don<- read2()%>% 
     group_by(chrom) %>% 
     summarise(chr_len=max(pos))%>% 
@@ -310,11 +350,16 @@ conditionalPanel(
         left_join(read2(), ., by=c("chrom"="chrom"))%>%
         
  # Add a cumulative position of each marker or SNP
-      
+
         arrange(chrom, pos) %>%
         mutate( BPcum=pos+tot)
-      }
+    }
+    # create text to be displayed in interactive visualization
+    
+    don$text <- paste("marker: ", don$marker, "\nChromosome: ", don$chrom, sep="") 
+    
     return (don)
+    #data2()$chrom<-as.factor(data2()$chrom) 
     })
 # Create the x axis
     
@@ -358,106 +403,162 @@ conditionalPanel(
       })
       })
    
+   #==============================PHENOTYPIC DATA VISUALIZATION========================================#
+   
+   # read the file if uploaded otherwise return null
+   output$signiOutput <- renderUI({
+    numericInput("pval", "Select Significant markers based on pvalue:", min = 0.000001, max =0.001, step = 0.01, value =0.00001)
+     
+   })
+   
+# filter the data based on the P -value significance
+  data33<-reactive ({
+    if (is.null(read2())) {
+      return(NULL)
+    }
+# input$pval adds flexibility to chose differenr set of p values user is interested
+    filter(data2(),P<input$pval)
+     
+     
+  }) 
+   
+# create the combined plot
+   output$mysig<-renderPlotly({
+     if (is.null(read2()))
+       return(NULL)
+     if (is.null(input$pval))
+       return()
+     ggplotly( 
+       ggplot(data33(), aes(x=BPcum, y=-log10(P), text=text))+theme_bw()+
+        geom_point( aes(color=factor(timepoint), shape=factor(timepoint)), alpha=1, size=2.5)+
+        scale_shape_manual(values=c(16,17,18,19,7,8,9,10,11,12,13,14,15,22, 23, 24))+
+         scale_x_continuous(label = (axisdf()$chrom), breaks= (axisdf()$center))+
+         scale_y_continuous(expand = c(0, 0) )+
+         
+#Add highlighted points
+
+         theme(axis.text.x = element_text(colour = 'black', face="bold", size = 7, vjust=0.5)) +
+         theme(axis.text.y = element_text(colour = 'black', face="bold", size = 7)) +
+         theme(axis.title.x = element_text(colour = 'black', face="bold", size = 12, vjust=-0.25)) +
+         theme(axis.title.y = element_text(colour = 'black', face="bold", size = 12, angle=90,
+                                        vjust=1.5))+xlab("Chromosome") +ylab("-log10(P)")+
+         theme(legend.title = element_text(colour="darkred", size=14, face="bold"),
+             legend.text = element_text(colour="grey0", size=12, face="bold"))
+
+       
+     ) %>%
+       layout(
+         legend = list(
+           orientation = "h", x = 0.2, y=1.1, text='New Legend Title', showarrow=T
+         )
+       )
+     #%>%layout(showlegend = FALSE)
+     
+  })
    
 #==============================PHENOTYPIC DATA VISUALIZATION========================================#
 
-   # read the file if uploaded otherwise return null  
-    read3 <- reactive({
-    inFile3 <- input$file3
-    if (is.null(inFile3))
+# read the file if uploaded otherwise return null  
+    read4 <- reactive({
+    inFile4 <- input$file4
+    if (is.null(inFile4))
       return(NULL)
-    data3 <- read.csv(inFile3$datapath, 
+    data4 <- read.csv(inFile4$datapath, 
                       header=input$header,
                       na.strings = input$na.strings,
                       sep=input$sep)
     
 #timepoint as factor
     
-    data3$timepoint<-as.factor(data3$timepoint)
-    return(data3)
+    data4$timepoint<-as.factor(data4$timepoint)
+    return(data4)
     })
     
     output$timeOutput <- renderUI({
-    selectInput("timepoint", "Choose Time Point or Phenotypes", unique(read3()$timepoint), selected = NULL)
+    selectInput("timepoint", "Choose Time Point or Phenotypes", unique(read4()$timepoint), selected = NULL)
   })
 # Make data reactive
     
-    data3<-reactive({
-    if (is.null(read3())) {
+    data4<-reactive({
+    if (is.null(read4())) {
       return()
     }
-    read3()%>%
+    read4()%>%
     filter(timepoint==unique(input$timepoint))
   })
   
 # Plot histogram
     
   output$plot <- renderPlotly({
-    if (is.null(read3())) {
+    if (is.null(read4())) {
       return()
     }
 # Plot the required graphs
     
     if (input$plot.type == "histogram") {
-      ggplot(data3(), aes(Value)) +
+      ggplot(data4(), aes(Value)) +
         geom_histogram(color="darkblue", fill="lightblue")+
         geom_vline(aes(xintercept=mean(Value)),
                    color="darkred", linetype="dashed", size=1)+
         labs(title="",x="Time Point", y = "Count")+
         theme_classic()+
-        theme (plot.title = element_text(color="black", size=10, hjust=0),
+        theme (plot.title = element_text(color="black", size=14, face="bold", hjust=0),
                axis.title.x = element_text(color="black", size=10, face="bold"),
                axis.title.y = element_text(color="black", size=10, face="bold")) +
         theme(axis.text = element_text(colour = "black"))+
-        theme(axis.text= element_text(face = "bold", color = "black", size = 8))
+        theme(axis.text= element_text(face = "bold", color = "black", size = 8))+
+        ggtitle("Histogram")
       
     }
     
 # Density Plot
     else if (input$plot.type == "density") {
-      ggplot(data3(), aes(Value)) +
+      ggplot(data4(), aes(Value)) +
         geom_density(alpha = 0.1,fill="darkblue", color="red" )+
         geom_vline(aes(xintercept=mean(Value)),
                    color="black", linetype="dashed", size=1)+
         #geom_density(position = "stack")+
         theme_classic()+
-        theme (plot.title = element_text(color="black", size=10, hjust=0),
+        theme (plot.title = element_text(color="black", size=14, face="bold", hjust=0),
                axis.title.x = element_text(color="black", size=10, face="bold"),
                axis.title.y = element_text(color="black", size=10, face="bold")) +
         theme(axis.text = element_text(colour = "black"))+
         theme(axis.text= element_text(face = "bold", color = "black", size = 8))+
-        theme(legend.position="none")
+        theme(legend.position="none")+
+        ggtitle("Density Plot")
     }
     
 # Density Combined
     else if (input$plot.type == "densityall") {
-      ggplot(read3(), aes(Value, fill = timepoint, colour = timepoint)) +
+      ggplot(read4(), aes(Value, fill = timepoint, colour = timepoint)) +
         geom_density(alpha = 0.1)+
         #geom_density(position = "stack")+
         theme_classic()+
-        theme (plot.title = element_text(color="black", size=10, hjust=0),
+        theme (plot.title = element_text(color="black", size=14, face="bold",hjust=0),
                axis.title.x = element_text(color="black", size=10, face="bold"),
                axis.title.y = element_text(color="black", size=10, face="bold")) +
         theme(axis.text = element_text(colour = "black"))+
         theme(axis.text= element_text(face = "bold", color = "black", size = 8))+
-        theme(legend.position="none")
+        theme(legend.position="none")+
+        ggtitle("Density Plot Across All the Timepoints")
       
         }
     
 # Box Plot
     
     else if (input$plot.type == "boxplot") {
-      ggplot(read3(), aes(x=timepoint, y=Value)) +
+      ggplot(read4(), aes(x=timepoint, y=Value)) +
         geom_boxplot(aes(fill=timepoint))+
         theme_classic()+
-        theme (plot.title = element_text(color="black", size=10, hjust=0),
+        theme (plot.title = element_text(color="black", size=14, face="bold",hjust=0),
                axis.title.x = element_text(color="black", size=10, face="bold"),
                axis.title.y = element_text(color="black", size=10, face="bold")) +
         theme(axis.text = element_text(colour = "black"))+
         theme(axis.text= element_text(face = "bold", color = "black", size = 8))+
         theme(legend.position="none")+
         aes(x = fct_inorder(timepoint))+
-        labs(title="",x="Time Point", y = "Trait Value")
+        labs(title="",x="Time Point", y = "Trait Value")+
+        ggtitle("Data Trend Along the Timepoints")
       
     }
   })
