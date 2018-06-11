@@ -403,7 +403,7 @@ tabPanel(
       })
       })
    
-   #==============================PHENOTYPIC DATA VISUALIZATION========================================#
+   #==============================Compare Significant Markers across timepoints========================================#
    
    # read the file if uploaded otherwise return null
    output$signiOutput <- renderUI({
