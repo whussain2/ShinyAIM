@@ -168,9 +168,9 @@ conditionalPanel(
       )),
 
 
-#============================Compare only Significant Markers Across Time Points========================================#
+#============================Compare only Associated Markers Across Time Points========================================#
 tabPanel(
-  h4("Comparison Significant Markers", style = "color: #800080;"),
+  h4("Comparison of Associated Markers", style = "color: #800080;"),
   sidebarLayout(
     
 # Frame side bar layout
@@ -188,7 +188,7 @@ tabPanel(
                                 #Tab='\t')
                  uiOutput("signiOutput"),
                  hr(),
-                 tags$h5("To see the interactive plot and compare the significant markers across timepoints or phenotypes, upload the data file in Manhatten Grid Plots data browse box. It uses the same data file. To modify or change the plot based on significant p value, directly enter the value by typing in the box", align = "center")
+                 tags$h5("To see the interactive plot and compare the associated markers across timepoints or phenotypes, upload the data file in Manhatten Grid Plots data browse box. It uses the same data file. To modify or change the plot based on p value, directly enter the value by typing in the box", align = "center")
                  ),
                 
     
@@ -196,14 +196,14 @@ tabPanel(
  # main panel reserves a space for the plot
     
     mainPanel(align="center",
-              tags$h4("Compare Significant Markers Across Timepoints", align = "center"),
+              tags$h4("Compare Associated Markers Across Timepoints", align = "center"),
               plotlyOutput("mysig", height=600))
   )),
 
 #============================PHENOTYPIC DATA VISUALIZATION========================================#
     
     tabPanel(
-    h4("Phenotypic Data visulaization", style = "color: #800080;"),
+    h4("Phenotypic Data Visulaization", style = "color: #800080;"),
     sidebarLayout(
         
     sidebarPanel(width = 3,
@@ -407,7 +407,7 @@ tabPanel(
    
    # read the file if uploaded otherwise return null
    output$signiOutput <- renderUI({
-    numericInput("pval", "Select Significant markers based on pvalue:", min = 0.000001, max =0.001, step = 0.01, value =0.00001)
+    numericInput("pval", "Select Top Markers Based on p Value:", min = 0.000001, max =0.001, step = 0.01, value =0.00001)
      
    })
    
