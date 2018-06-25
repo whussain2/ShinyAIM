@@ -428,7 +428,7 @@ tabPanel(
      ggplotly( 
        ggplot(data33(), aes(x=BPcum, y=-log10(P), text=text))+theme_bw()+
         geom_point( aes(color=factor(timepoint), shape=factor(timepoint)), alpha=1, size=2.5)+
-        scale_shape_manual(values=c(16,17,18,19,7,8,9,10,11,12,13,14,15,22, 23, 24))+
+        #scale_shape_manual(values=c(16,17,18,19,7,8,9,10,11,12,13,14,15,22, 23, 24))+
          scale_x_continuous(label = (axisdf()$chrom), breaks= (axisdf()$center))+
          scale_y_continuous(expand = c(0, 0) )+
          
@@ -440,14 +440,15 @@ tabPanel(
          theme(axis.title.y = element_text(colour = 'black', face="bold", size = 12, angle=90,
                                         vjust=1.5))+xlab("Chromosome") +ylab("-log10(P)")+
          theme(legend.title = element_text(colour="darkred", size=14, face="bold"),
-             legend.text = element_text(colour="grey0", size=12, face="bold"))
+             legend.text = element_text(colour="grey0", size=12, face="bold"))+
+              theme(legend.position="none")
 
        
-     ) %>%
-       layout(
-         legend = list(
-           orientation = "h", x = 0.2, y=1.1, text='New Legend Title', showarrow=T
-         )
+    # ) %>%
+       #layout(
+         #legend = list(
+           #orientation = "h", x = 0.2, y=1.1, text='New Legend Title', showarrow=T
+        # )
        )
      #%>%layout(showlegend = FALSE)
      
