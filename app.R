@@ -1,9 +1,7 @@
 ## ==================================================================================== ##
 # ShinyAIM for visualization of interactive Manhatten plots of longitudnal GWAS data.
 
-#Copyright (c) 2000-2006, The Perl Foundation. 
-#This program is free software: you can redistribute it and/or modify
-# it under the terms of the Artistic License 2.0.
+#Copyright (c) 2018, Waseem Hussain,  code licensed under Artistic License 2.0.
 #This license establishes the terms under which a given free software Package may be copied,
 #modified, distributed, and/or redistributed. The intent is that the Copyright Holder maintains
 #some artistic control over the development of that Package while still keeping the Package
@@ -18,7 +16,6 @@
 # You can run the application by clicking the 'Run App' button above in R studio.
 #================================================================================================ ##
 
-  rm(list=ls())
 # Load required packages
   
   library(shiny)
@@ -89,7 +86,7 @@
 
 # Sliderinput button to allow users to choose significance level
 
-      sliderInput("logpvalue", "Choose -log pValue:",
+      sliderInput("logpvalue", "Choose -log 10 pValue:",
                                  min = -log10(0.01), max = -log10(0.00000001),
                                  value = -log10(0.00001), step=0.5),
 # Sliderinput button to allow users to display top significant SNPs
@@ -148,7 +145,7 @@ conditionalPanel(
       
 # Sliderinput button to allow users to choose significance level
 
-      sliderInput("pvalue", "Choose -log pValue:",
+      sliderInput("pvalue", "Choose -log 10 pValue:",
                                  min = -log10(0.01), max = -log10(0.00000001),
                                  value = -log10(0.00001), step=0.5),
 
@@ -163,7 +160,7 @@ conditionalPanel(
 # main panel reserves a for the plot
 
     mainPanel(align="center",
-                  tags$h4("Combined Manhatten Plot", align = "center"),
+                  tags$h4("Manhatten Grid Plot", align = "center"),
                   plotOutput("mygrid", height=800))
       )),
 
