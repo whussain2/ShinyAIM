@@ -404,7 +404,7 @@ tabPanel(
    
    # read the file if uploaded otherwise return null
    output$signiOutput <- renderUI({
-    numericInput("pval", "Select Top Markers Based on p Value:", min = 0.000001, max =0.001, step = 0.01, value =0.00001)
+    numericInput("pval", "Select Top Markers Based on p Value:", min = 0.000001, max =0.001, step = 0.01, value =0.000001)
      
    })
    
