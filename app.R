@@ -498,7 +498,7 @@ tabPanel(
         geom_histogram(color="darkblue", fill="lightblue")+
         geom_vline(aes(xintercept=mean(Value)),
                    color="darkred", linetype="dashed", size=1)+
-        labs(title="",x="Time Point", y = "Count")+
+        labs(title="",x="Value", y = "Count")+
         theme_classic()+
         theme (plot.title = element_text(color="black", size=14, face="bold", hjust=0),
                axis.title.x = element_text(color="black", size=10, face="bold"),
