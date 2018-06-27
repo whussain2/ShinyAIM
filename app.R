@@ -185,7 +185,7 @@ tabPanel(
                                 #Tab='\t')
                  uiOutput("signiOutput"),
                  hr(),
-                 tags$h5("To see the interactive plot and compare the associated markers across timepoints or phenotypes, upload the data file in Manhatten Grid Plots data browse box. It uses the same data file. To modify or change the plot based on p value, directly enter the value by typing in the box", align = "center")
+                 tags$h5("To see the interactive plot and compare the associated markers across timepoints or different phenotypes, upload the data file in Manhatten Grid Plots data browse box. It uses the same data file. To modify or change the plot based on p value, directly enter the value by typing in the box", align = "center")
                  ),
                 
     
