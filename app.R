@@ -29,11 +29,25 @@
 # Define UI for the application, for more information on it please see https://shiny.rstudio.com/gallery/
   
       ui<- fluidPage(
-  
-# Create the Application Title uing headerPanel
-  
-      headerPanel(h1("ShinyAIM: Shiny Application for Interactive Manhatten Plots", style = "font-family: 'Trattatello', fantasy; font-weight: 500; line-height: 1.1; color: #D2691E;", align = "center")),
 
+# Create the Application Title uing headerPanel and formate it
+  
+        #headerPanel(h1("ShinyAIM: Shiny Application for Interactive Manhatten Plots", style = "font-family: 'Trattatello', fantasy; font-weight: 500; line-height: 1.1; color: #D2691E;", align = "center")),
+        tags$head(
+        tags$style(HTML("
+        @import url('//fonts.googleapis.com/css?family=Lobster|Cabin:400,700');
+         h1 {
+        font-family: 'Trattatello', fantasy;
+        font-weight: 500;
+        line-height: 1.1;
+       color: #D2691E;
+      align = 'center'
+      }
+
+    "))
+        ),
+    headerPanel("ShinyAIM: Shiny Application for Interactive Manhatten Plots"),
+        
 # Blocks printing any errors in the Shiny UI.
   
      tags$style(type="text/css",
@@ -194,6 +208,8 @@ tabPanel(
     
     mainPanel(align="center",
               tags$h4("Compare Associated Markers Across Timepoints", align = "center"),
+              hr(),
+              tags$h6("Shapes and colors represents timepoints or phenotypes", align = "center", style = "color: darkred;"),
               plotlyOutput("mysig", height=600))
   )),
 
@@ -428,7 +444,8 @@ tabPanel(
      ggplotly( 
        ggplot(data33(), aes(x=BPcum, y=-log10(P), text=text))+theme_bw()+
         geom_point( aes(color=factor(timepoint), shape=factor(timepoint)), alpha=1, size=2.5)+
-        #scale_shape_manual(values=c(16,17,18,19,7,8,9,10,11,12,13,14,15,22, 23, 24))+
+         scale_shape_identity()+
+        #scale_shape_manual(values=rep(c(16,17,18,19,7,8,9,10,11,12,13,14,15,22, 23, 24)))+
          scale_x_continuous(label = (axisdf()$chrom), breaks= (axisdf()$center))+
          scale_y_continuous(expand = c(0, 0) )+
          
@@ -442,14 +459,15 @@ tabPanel(
          theme(legend.title = element_text(colour="darkred", size=14, face="bold"),
              legend.text = element_text(colour="grey0", size=12, face="bold"))+
               theme(legend.position="none")
+)
 
        
-    # ) %>%
-       #layout(
-         #legend = list(
+    #) %>%
+      # layout(
+        # legend = list(
            #orientation = "h", x = 0.2, y=1.1, text='New Legend Title', showarrow=T
         # )
-       )
+       #)
      #%>%layout(showlegend = FALSE)
      
   })
