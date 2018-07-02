@@ -62,6 +62,7 @@ column(8,
     
     
     h2(strong('Shiny Application is Hosted at:'),
+     tags$a(href="https://chikudaisei.shinyapps.io/shinyaim/", "ShinyAIM"),
        style = "font-size: 16px"),
      tags$div(
       tags$a(href="https://github.com/whussain2/ShinyAIM", "ShinyAIM:Website"),
@@ -85,6 +86,12 @@ column(8,
         style = "font-size: 18px"),
       tags$p("Enjoy, and please give us valuable feedback.", style = "font-size: 18px"),
       hr(),
+      h3(strong('Acknowledgement:')),
+      tags$div(
+        tags$p('We thank Yan Holtz for the useful R code provided on the webpage (link given below), some of the codes has been adopted in this work to plot the combined Manhattan plot'), 
+        tags$a(href="https://www.r-graph-gallery.com/wp-content/uploads/2018/02/Manhattan_plot_in_R.html", "Webpage available"),
+        style = "font-size: 16px"),
+        hr(),
       tags$div(
         tags$footer('Copyright (c) 2018, Waseem Hussain,  code licensed under Artistic License 2.0.'),
         style = "font-size: 16px")
