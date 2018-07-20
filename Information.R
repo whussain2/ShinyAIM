@@ -59,9 +59,8 @@ column(8,
           
         ), style = "font-size: 16px; line-height: 1.7;"),
     hr(),
-    
-    h2(strong('Demo how to use the application cab be found on youtube at:'),
-       tags$a(href="https://youtu.be/5-JLMpSiwv4", "Demo on Youtube"),
+     h2(strong('Link to video demonstration is available at:'),
+       tags$a(href="https://youtu.be/5-JLMpSiwv4", "https://youtu.be/5-JLMpSiwv4"),
        style = "font-size: 18px"),
     hr(),
     
