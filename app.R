@@ -1,5 +1,5 @@
 ## ==================================================================================== ##
-# ShinyAIM for visualization of interactive Manhatten plots of longitudnal GWAS data.
+# ShinyAIM for visualization of interactive Manhattan plots of longitudnal GWAS data.
 
 #Copyright (c) 2018, Waseem Hussain,  code licensed under Artistic License 2.0.
 #This license establishes the terms under which a given free software Package may be copied,
@@ -32,7 +32,7 @@
 
 # Create the Application Title uing headerPanel and formate it
   
-        #headerPanel(h1("ShinyAIM: Shiny Application for Interactive Manhatten Plots", style = "font-family: 'Trattatello', fantasy; font-weight: 500; line-height: 1.1; color: #D2691E;", align = "center")),
+        #headerPanel(h1("ShinyAIM: Shiny Application for Interactive Manhattan Plots", style = "font-family: 'Trattatello', fantasy; font-weight: 500; line-height: 1.1; color: #D2691E;", align = "center")),
         tags$head(
         tags$style(HTML("
         @import url('//fonts.googleapis.com/css?family=Lobster|Cabin:400,700');
@@ -46,7 +46,7 @@
 
     "))
         ),
-    headerPanel("ShinyAIM: Shiny Application for Interactive Manhatten Plots"),
+    headerPanel("ShinyAIM: Shiny Application for Interactive Manhattan Plots"),
         
 # Blocks printing any errors in the Shiny UI.
   
@@ -66,10 +66,10 @@
       source("Information.R", local = TRUE)[1]
     ),
     
-# Creat tabpanel Interactive Manhatten plots
+# Creat tabpanel Interactive Manhattan plots
 
     tabPanel(
-      h4("Interactive Manhatten Plots", style = "color: #800080;"),
+      h4("Interactive Manhattan Plots", style = "color: #800080;"),
       
 # Within this tabpanel sidebar layout and  sidebar panel is framed
       
@@ -78,7 +78,7 @@
                    
 # Data upload button is created
 
-      fileInput('file1', 'Upload Data File for Interactive Manhatten Plots:',
+      fileInput('file1', 'Upload Data File for Interactive Manhattan Plots:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
 
 # Check wheather file has header or not
@@ -116,8 +116,8 @@ conditionalPanel(
 
 # main panel reserves space for the plot 
 
-      mainPanel(h4("Interactive Manhatten Plot", align = "center"),
-          plotlyOutput("mymanhatten"),
+      mainPanel(h4("Interactive Manhattan Plot", align = "center"),
+          plotlyOutput("mymanhattan"),
           br(),
           hr(),
           conditionalPanel(
@@ -132,16 +132,16 @@ conditionalPanel(
       )),
 
 
- #============================MANHATTEN GRID PLOTS=================================================#
+ #============================MANHATTAN GRID PLOTS=================================================#
     
       tabPanel(
-      h4("Manhatten Grid Plot", style = "color: #800080;"),
+      h4("Manhattan Grid Plot", style = "color: #800080;"),
       sidebarLayout(
 
  # Data upload button is created
         
       sidebarPanel(width = 3,
-                     fileInput('file2', 'Upload Data File for Combined Manhatten Plot:',
+                     fileInput('file2', 'Upload Data File for Combined Manhattan Plot:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
                    
 # Check wheather file has header or not
@@ -174,7 +174,7 @@ conditionalPanel(
 # main panel reserves a for the plot
 
     mainPanel(align="center",
-                  tags$h4("Manhatten Grid Plot", align = "center"),
+                  tags$h4("Manhattan Grid Plot", align = "center"),
                   plotOutput("mygrid", height=800))
       )),
 
@@ -187,7 +187,7 @@ tabPanel(
 # Frame side bar layout
     
     sidebarPanel(width = 3,
-                 #fileInput('file3', 'Upload Data File for Combined Manhatten Plot:',
+                 #fileInput('file3', 'Upload Data File for Combined Manhattan Plot:',
                            #accept=c('text/csv','text/comma-separated-values,text/plain')),
                  
                  # Check wheather file has header or not
@@ -199,7 +199,7 @@ tabPanel(
                                 #Tab='\t')
                  uiOutput("signiOutput"),
                  hr(),
-                 tags$h5("To see the interactive plot and compare the associated markers across timepoints or different phenotypes, upload the data file in Manhatten Grid Plots data browse box. It uses the same data file. To modify or change the plot based on p value, directly enter the value by typing in the box", align = "center")
+                 tags$h5("To see the interactive plot and compare the associated markers across timepoints or different phenotypes, upload the data file in Manhattan Grid Plots data browse box. It uses the same data file. To modify or change the plot based on p value, directly enter the value by typing in the box", align = "center")
                  ),
                 
     
@@ -254,7 +254,7 @@ tabPanel(
 
     server <- function(input, output) {
 
-#==============================INTERACTIVE MANHATTEN PLOTS========================================#
+#==============================INTERACTIVE MANHATTAN PLOTS========================================#
 # read the file if uploaded otherwise return null
   
   read1 <- reactive({
@@ -289,9 +289,9 @@ tabPanel(
       filter(timepoint==unique(input$man))
     })
     
-# Plot the interactive manhatten plots
+# Plot the interactive manhattan plots
   
-    output$mymanhatten<-renderPlotly({
+    output$mymanhattan<-renderPlotly({
     if (is.null(read1()))
       return(NULL)
     if (is.null(input$man))
@@ -325,7 +325,7 @@ tabPanel(
       data6<-arrange(data5(), P)
       data6[1:input$p,]
     })
-#================================COMBINED/GRID MANHATTEN PLOTS==========================================#
+#================================COMBINED/GRID MANHATTAN PLOTS==========================================#
 # read the file if uploaded otherwise return null
     
     read2 <- reactive({
