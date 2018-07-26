@@ -19,8 +19,8 @@ column(8,
        tags$div(
          tags$div(tags$ul(
            tags$li("Interactive Manhattan Plots."),
-           tags$li("Manhattan Plots Combined Across All Time Points."),
-           tags$li("Comparison of Associated Markers Across All Time Points."),
+           tags$li("Manhattan Grid Plot."),
+           tags$li("Comparison of Associated Markers."),
            tags$li("Phenotypic Data Visualization: Interactive Histograms, Density Plots, and Box Plots.")),
            style = "font-size: 18px")
          ),
@@ -29,12 +29,12 @@ column(8,
       tags$div(
         
         tags$ol(
-          tags$li("The application has four main tab Panels including (a) Interactive Manhattan Plots, (b) Combined Manhattan Plots, (c) Compare Associated Markers, and (d) Phenotypic Data Visualization."), 
+          tags$li("The application has four main tab Panels including (a) Interactive Manhattan Plots, (b) Manhattan Grid Plot, (c) Comparision of Associated Markers, and (d) Phenotypic Data Visualization."), 
           tags$li("The application accepts text/csv,text/comma-separated-values,text/plainfile format. Users can see the sample files available in GitHub folder:"), 
           tags$a(href="https://github.com/whussain2/ShinyAIM/blob/master/Samplefiles/samplefile1_manhattan.csv", "Samplefile1:Manhattan Plots"),
           br(),
           tags$a(href="https://github.com/whussain2/ShinyAIM/blob/master/Samplefiles/samplefile2_phenotypic.csv", "Samplefile2: Phenotypic Data"),
-          tags$li("The screenshot of sample files for Interactive Manhattan Plots, Combined Manhattan Plots and Phenotypic Data Visualization  is also shown below:"),
+          tags$li("The screenshot of sample files for Interactive Manhattan Plots, Manhattan Grid Plot and Phenotypic Data Visualization  is also shown below:"),
           hr(),
           img(src = 'dataformat.png', align = "center", width = "100%", height = "100%"),
           hr(),
@@ -48,11 +48,11 @@ column(8,
             tags$li("NSFTV_ID: is ID for genotypes and can be anything in users file."),
             tags$li("Value: represents the phenotypic data for each time point and must be numeric.")
           ),
-          tags$li("For each main tab panel separate input files needs to be uploaded, and users can use sample files from the GitHub directory to get used to the application."),
-          tags$li("For Manhattan Plot panel, once the input file in right format is uploaded, users need to choose the separator value in the file. Once users choose the separator value, the time points will be automatically updated in Choose Time point box.  Users can select any time point and Interactive Manhattan plot will be automatically generated in left main panel, and users can interact with it to get more information. Users can choose the significant threshold level by moving slider input bar."),
-          tags$li("In Manhattan Plot panel, users can also see the list of top SNPs in table format by checking Display in Table Significant SNPs box. Once checked, List of SNPs will be displayed with higest p values on top. Users can use slider input to control the number of SNPs displayed in table."),
-          tags$li("For Combined Manhattan Plot panel, once input file is uploaded and separator value choose, the Combined Manhattan Plot will be automatically generated in left main panel. Users can choose the significant threshold level and also number of columns in the combined/grid plot. Note: CSV file for Manhattan plot and combined Manhattan plot is same, however, they need to be uploaded separately."),
-          tags$li("For Comparison of Associated Markers panel, It uses the same data file as uploded for Combined Manhattan Plot so no need to upload the data for this tab Panel. Once tab Panel is clicked,  plot will be automatically displayed in right panel. To modify or change the plot based on top p value, directly enter the value by typing in the box."),
+          tags$li("For each main tab separate input files needs to be uploaded, and users can use sample files from the GitHub directory to get used to the application."),
+          tags$li("For Interactive Manhattan Plot tab, once the input file in right format is uploaded, users need to choose the separator value in the file. Once users choose the separator value, the time points will be automatically updated in Choose Time point box.  Users can select any time point and Interactive Manhattan plot will be automatically generated in left main panel, and users can interact with it to get more information. Users can choose the significant threshold level by moving slider input bar."),
+          tags$li("In Interactive Manhattan Plot tab, users can also see the list of top SNPs in table format by checking Display in Table Significant SNPs box. Once checked, List of SNPs will be displayed with higest p values on top. Users can use slider input to control the number of SNPs displayed in table."),
+          tags$li("For Manhattan Grid Plot tab, once input file is uploaded and separator value choose, the combined Manhattan plot will be automatically generated in left main panel. Users can choose the significant threshold level and also number of columns in the combined/grid plot. Note: CSV file for Manhattan plot and combined Manhattan plot is same, however, they need to be uploaded separately."),
+          tags$li("For Comparison of Associated Markers tab, It uses the same data file as uploded for Manhattan Grid Plot so no need to upload the data for this tab Panel. Once tab Panel is clicked,  plot will be automatically displayed in right panel. To modify or change the plot based on top p value, directly enter the value by typing in the box."),
           tags$li("For Phenotypic Data Visualization, once the right CVS file is uploaded and file separator value is chosen, the time point will be automatically updated. The users can select the time point, and choose the time point to see the histogram and density plots. Users can also select box plot type to see the trend and variation across all the time points. All the plot types are interactive, and users can interact to get more information   .")
           
     
@@ -88,7 +88,7 @@ column(8,
       hr(),
       h3(strong('Acknowledgement:')),
       tags$div(
-        tags$p('We thank Yan Holtz for the useful R code provided on the webpage (link given below), some of the codes has been adopted in this work to plot the combined Manhattan plot'), 
+        tags$p('We thank Yan Holtz for the useful R code provided on the webpage (link given below), some of the codes has been adopted in this work to plot the Manhattan Grid Plot'), 
         tags$a(href="https://www.r-graph-gallery.com/wp-content/uploads/2018/02/Manhattan_plot_in_R.html", "Webpage available"),
         style = "font-size: 18px"),
         hr(),
