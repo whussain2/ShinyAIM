@@ -100,7 +100,7 @@
 
 # Sliderinput button to allow users to choose significance level
 
-      sliderInput("logpvalue", "Choose -log 10 pValue:",
+      sliderInput("logpvalue", "Choose -log 10 p-value:",
                                  min = -log10(0.01), max = -log10(0.00000001),
                                  value = -log10(0.00001), step=0.5),
 # Sliderinput button to allow users to display top significant SNPs
@@ -141,7 +141,7 @@ conditionalPanel(
  # Data upload button is created
         
       sidebarPanel(width = 3,
-                     fileInput('file2', 'Upload Data File for Combined Manhattan Plot:',
+                     fileInput('file2', 'Upload Data File for Manhattan Grid Plot:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
                    
 # Check wheather file has header or not
@@ -159,7 +159,7 @@ conditionalPanel(
       
 # Sliderinput button to allow users to choose significance level
 
-      sliderInput("pvalue", "Choose -log 10 pValue:",
+      sliderInput("pvalue", "Choose -log 10 p-value:",
                                  min = -log10(0.01), max = -log10(0.00000001),
                                  value = -log10(0.00001), step=0.5),
 
