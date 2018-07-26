@@ -165,7 +165,7 @@ conditionalPanel(
 
 # Sliderinput button to allow users to choose the number of columns in grid plot
 
-     sliderInput("ncol", "Select Number of Columns for Grid Plot:",
+     sliderInput("ncol", "Select the Number of Columns for Grid Plot:",
                                  min = 2, max =10,
                                  value =4, step=1)
         ),
@@ -420,7 +420,7 @@ tabPanel(
    
    # read the file if uploaded otherwise return null
    output$signiOutput <- renderUI({
-    numericInput("pval", "Select Top Markers Based on p Value:", min = 0.000001, max =0.001, step = 0.01, value =0.000001)
+    numericInput("pval", "Select Top Markers Based on p-value:", min = 0.000001, max =0.001, step = 0.01, value =0.000001)
      
    })
    
