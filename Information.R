@@ -89,7 +89,7 @@ column(8,
       h3(strong('Acknowledgement:')),
       tags$div(
         tags$p('We thank Yan Holtz for the useful R code provided on the webpage (link given below). Some of the codes has been adopted for this project to plot the grid Manhattan plot'), 
-        tags$a(href="https://www.r-graph-gallery.com/wp-content/uploads/2018/02/Manhattan_plot_in_R.html", "Webpage available"),
+        tags$a(href="https://www.r-graph-gallery.com/wp-content/uploads/2018/02/Manhattan_plot_in_R.html", "link"),
         style = "font-size: 18px"),
         hr(),
       tags$div(
