@@ -209,7 +209,7 @@ tabPanel(
     mainPanel(align="center",
               tags$h4("Compare Associated Markers Across Timepoints", align = "center"),
               hr(),
-              tags$h6("Shapes and colors represents timepoints or phenotypes", align = "center", style = "color: darkred;"),
+              tags$h6("Shapes and colors represent timepoints or phenotypes", align = "center", style = "color: darkred;"),
               plotlyOutput("mysig", height=600))
   )),
 
