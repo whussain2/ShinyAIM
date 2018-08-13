@@ -16,7 +16,7 @@
 # You can run the application by clicking the 'Run App' button above in R studio.
 #================================================================================================ ##
 
-# Load required packages
+# Load the required packages
   
   library(shiny)
   library(ggplot2)
