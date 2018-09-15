@@ -4,9 +4,9 @@
 The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io/shinyaim/
 <header class = "mainHeader">
 <p>
-<div style="background-color:blue;color:black;padding:5px;">
-<p>shiny::runGitHub("ShinyAIM", "whussain2")</p>
+<div style="background-color:blue;color:red;padding:5px;">
 <p>The application can be run  locally with just one command in R software or RStudio:</p>
+<p>shiny::runGitHub("ShinyAIM", "whussain2")</p>
 <p>Make sure the required libraries including "shiny", "ggplot2", "dplyr", "grid", "plotly", "manhattanly", "forcats" are installed on your machine before running the above command.</p>
 <p>These packages can be installed through following command line:</p> 
 <p>install.packages(c("shiny","ggplot2","dplyr","grid","plotly","manhattanly","forcats"))</p>
@@ -19,7 +19,7 @@ The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io
 <p>Copyright (c) 2018, Waseem Hussain,  code licensed under Artistic License 2.0.</p>
 
 
-<b>Contact<b/>
+<b>Contact</b>
 <hr>
 
 You may contact the author of this code, Waseem hussain, at<small> <waseem.hussain@unl.edu>; <waseemhussain907@gmail.com></small>
