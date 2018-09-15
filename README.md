@@ -1,4 +1,5 @@
  <b> ShinyAIM: Application for Interactive Manhattan Plot Visualization</b>
+<img src="image.jpg">
 <hr>
  
 The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io/shinyaim/
@@ -6,10 +7,10 @@ The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io
 <p>
 <div style="background-color:blue;color:red;padding:5px;">
 <p>The application can be run  locally with just one command in R software or RStudio:</p>
-<p>shiny::runGitHub("ShinyAIM", "whussain2")</p>
+<p><i>shiny::runGitHub("ShinyAIM", "whussain2")</i></p>
 <p>Make sure the required libraries including "shiny", "ggplot2", "dplyr", "grid", "plotly", "manhattanly", "forcats" are installed on your machine before running the above command.</p>
 <p>These packages can be installed through following command line:</p> 
-<p>install.packages(c("shiny","ggplot2","dplyr","grid","plotly","manhattanly","forcats"))</p>
+<p><i>install.packages(c("shiny","ggplot2","dplyr","grid","plotly","manhattanly","forcats"))<i/></p>
 </div>
 
 <b>Licensing</b>
