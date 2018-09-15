@@ -5,7 +5,7 @@ The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io
 <header class = "mainHeader">
 <p>
 <p>The application can be run  locally with just one command in R software or RStudio:</p>
-<div style="background-color:Azure;color:black;padding:2px;">
+<div style="background-color:blue;color:black;padding:2px;">
 <p>shiny::runGitHub("ShinyAIM", "whussain2")</p>
 </div>
 </div style="background-color:lightblue;color:black;padding:2px;">
