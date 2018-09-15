@@ -1,4 +1,4 @@
-ShinyAIM: Application for Interactive Manhattan Plot Visualization
+<b>ShinyAIM: Application for Interactive Manhattan Plot Visualization<b>
 
 
 The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io/shinyaim/
