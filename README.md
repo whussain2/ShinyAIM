@@ -18,4 +18,4 @@ Copyright (c) 2018, Waseem Hussain,  code licensed under Artistic License 2.0.
 # Contact
 You may contact the author of this code, Waseem hussain at <waseem.hussain@ul.edu>
 # DOI
-https://doi.org/10.5281/zenodo.1419296
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1419296.svg)](https://doi.org/10.5281/zenodo.1419296)
