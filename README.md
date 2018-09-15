@@ -5,14 +5,14 @@ The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io
 <header class = "mainHeader">
 <p>
 <p>The application can be run  locally with just one command in R software or RStudio:</p>
-<div style="background-color:snow;color:black;padding:2px;">
+<div style="background-color:Azure;color:black;padding:2px;">
 <p>shiny::runGitHub("ShinyAIM", "whussain2")</p>
 </div>
-<p>Make sure the required libraries including "shiny", "ggplot2", "dplyr", "grid", "plotly", "manhattanly", "forcats" are installed on your machine before running the above command.</p>
+</div style="background-color:lightblue;color:black;padding:2px;">
+<p><small>Make sure the required libraries including "shiny", "ggplot2", "dplyr", "grid", "plotly", "manhattanly", "forcats" are installed on your machine before running the above command.</p>
 <p>These packages can be installed through following command line:</p> 
-<p>install.packages(c("shiny","ggplot2","dplyr","grid","plotly","manhattanly","forcats"))</p>
+<p>install.packages(c("shiny","ggplot2","dplyr","grid","plotly","manhattanly","forcats"))</small></p>
 <p/>
-
 <div/>
 
 <div>
