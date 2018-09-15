@@ -19,7 +19,7 @@ The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io
 
 <b>Contact</b>
 <hr>
-<p>You may contact the author of this code, Waseem hussain at<awaseem.hussain@unl.edu</a>; <awaseemhussain907@gmail.com</a></p>
+<p>You may contact the author of this code, Waseem hussain at <waseem.hussain@unl.edu> </p>
 
 <b> DOI </b>
 <hr>
