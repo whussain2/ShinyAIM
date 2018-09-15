@@ -1,5 +1,5 @@
  <b> ShinyAIM: Application for Interactive Manhattan Plot Visualization</b>
-![](ShinyAIM/blob/master/www/image.png)
+![](www/image.png)
 <hr>
  
 The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io/shinyaim/
