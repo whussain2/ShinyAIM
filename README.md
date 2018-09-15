@@ -1,6 +1,5 @@
  <b> ShinyAIM</b>
  <p>ShinyAIM: Application for Interactive Manhattan Plot Visualization</p>
- <hr>
 ![](www/image.png)
 <hr>
  
