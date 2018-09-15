@@ -2,7 +2,7 @@
  
 ![](www/image.png)
 <hr>
- 
+''' 
 The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io/shinyaim/
 <header class = "mainHeader">
 <p>
@@ -13,7 +13,7 @@ The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io
 <p>These packages can be installed through following command line:</p> 
 <p><i>install.packages(c("shiny","ggplot2","dplyr","grid","plotly","manhattanly","forcats"))</i></p>
 </div>
-
+'''
 <b>Licensing</b>
 <hr>
 <p>This shiny code is licensed under the For more details see Artistic License 2.0. at https://opensource.org/licenses/Artistic-2.0.</p> 
