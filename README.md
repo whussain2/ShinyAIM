@@ -16,10 +16,6 @@ install.packages(c("shiny","ggplot2","dplyr","grid","plotly","manhattanly","forc
 This shiny code is licensed under Artistic License 2.0. at https://opensource.org/licenses/Artistic-2.0. 
 Copyright (c) 2018, Waseem Hussain,  code licensed under Artistic License 2.0.
 # Contact
-<b>Contact</b>
-<hr>
 You may contact the author of this code, Waseem hussain at <waseem.hussain@ul.edu>
 # DOI
-<b> DOI </b>
-<hr>
 https://doi.org/10.5281/zenodo.1419296
