@@ -7,7 +7,7 @@ The application can be run  locally with just one command in R software or RStud
 ```
 shiny::runGitHub("ShinyAIM", "whussain2")
 ```
-Make sure the required libraries including "shiny", "ggplot2", "dplyr", "grid", "plotly", "manhattanly", "forcats" are installed and laoded before running the above command.
+Make sure the required libraries including "shiny", "ggplot2", "dplyr", "grid", "plotly", "manhattanly", "forcats" are installed and loaded before running the above command.
 These packages can be installed by running the following code in R or RStudio:
 ```
 install.packages(c("shiny","ggplot2","dplyr","grid","plotly","manhattanly","forcats"))
