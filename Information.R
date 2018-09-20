@@ -100,7 +100,7 @@ column(8,
     h2('DOI'),
     tags$blockquote(
       #img(src = 'DOI.png', align = "center", width = "40%", height = "40%")
-      tags$a(img(src="DOI.png", align = "center", width = "40%", height = "40%"), href="https://zenodo.org/record/1419296#.W6Fami2ZN-U")
+      tags$a(img(src="DOI.png", align = "center", width = "40%", height = "40%"), href="https://doi.org/10.5281/zenodo.1422835")
     ),
     hr(),
       h3(strong('Acknowledgement:')),
