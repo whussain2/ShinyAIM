@@ -15,9 +15,16 @@
 # You may contact the author of this code, Waseem Hussain, at <waseem.hussain@ unl.edu>
 # You can run the application by clicking the 'Run App' button above in R studio.
 #================================================================================================ ##
-
-# Load the required packages
-  
+      
+# Load the required packages if not installed
+    packages = c("shiny", "ggplot2", "dplyr", "grid", "plotly", "manhattanly", "forcats")
+    package.check <- lapply(packages, FUN = function(x) {
+     if (!require(x, character.only = TRUE)) {
+        install.packages(x, dependencies = TRUE)
+        library(x, character.only = TRUE)
+      }
+   })
+  # Load the required packages   
   library(shiny)
   library(ggplot2)
   library(dplyr)
@@ -25,6 +32,7 @@
   library(plotly)
   library(manhattanly)
   library(forcats)
+  
 
 # Define UI for the application, for more information on it please see https://shiny.rstudio.com/gallery/
   
@@ -70,12 +78,17 @@
 
     tabPanel(
       h4("Interactive Manhattan Plots", style = "color: #800080;"),
-      
+      # Creat button to downlaod sample files
+      #downloadButton("downloadData", label = "Download sample files"),
 # Within this tabpanel sidebar layout and  sidebar panel is framed
       
       sidebarLayout(
       sidebarPanel(width = 3,
-                   
+  
+# Creat button to downlaod sample files
+                   downloadButton("downloadData", label = "Download Sample File"),
+                    hr(),
+
 # Data upload button is created
 
       fileInput('file1', 'Upload Data File for Interactive Manhattan Plots:',
@@ -216,10 +229,12 @@ tabPanel(
 #============================PHENOTYPIC DATA VISUALIZATION========================================#
     
     tabPanel(
-    h4("Phenotypic Data Visulaization", style = "color: #800080;"),
+    h4("Phenotypic Data Visualization", style = "color: #800080;"),
     sidebarLayout(
         
     sidebarPanel(width = 3,
+                 downloadButton("downloadData1", label = "Download Sample File"),
+                 hr(),
                      fileInput('file4', 'Upload Data File:',
                                accept=c('text/csv','text/comma-separated-values,text/plain')),
                      
@@ -245,7 +260,7 @@ tabPanel(
 )
   
 
-      
+#================================serever part=================================     
 # Choose the size of shiny app
       
     options(shiny.maxRequestSize = 100*1024^2)
@@ -255,7 +270,18 @@ tabPanel(
     server <- function(input, output) {
 
 #==============================INTERACTIVE MANHATTAN PLOTS========================================#
-# read the file if uploaded otherwise return null
+
+# Download data button
+      output$downloadData <- downloadHandler(
+        filename <- function() {
+          paste("Sample_file_Manhattan", ".csv", sep = "")
+        },
+        
+        content <- function(file) {
+          file.copy("Samplefiles/samplefile1_manhattan.csv", file)
+        },
+        contentType = "application/csv")
+  # read the file if uploaded otherwise return null
   
   read1 <- reactive({
     inFile1 <- input$file1
@@ -475,7 +501,17 @@ tabPanel(
 #==============================PHENOTYPIC DATA VISUALIZATION========================================#
 
 # read the file if uploaded otherwise return null  
-    read4 <- reactive({
+   # Download data button
+   output$downloadData1 <- downloadHandler(
+     filename <- function() {
+       paste("Sample_file_Phenotypic", ".csv", sep = "")
+     },
+     
+     content <- function(file) {
+       file.copy("Samplefiles/samplefile2_phenotypic.csv", file)
+     },
+     contentType = "application/csv") 
+   read4 <- reactive({
     inFile4 <- input$file4
     if (is.null(inFile4))
       return(NULL)
