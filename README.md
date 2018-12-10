@@ -2,7 +2,6 @@
 ![](www/image.png)
 
 The application is hosted on Shinyapps.io here: https://chikudaisei.shinyapps.io/shinyaim/
-The manuscript describing the application is published in Plant Direct Jouranl and can be found here https://doi-org.libproxy.unl.edu/10.1002/pld3.91
 
 The application can be run  locally with just one command in R software or RStudio:</p>
 ```
@@ -21,3 +20,6 @@ Copyright (c) 2018, Waseem Hussain,  code licensed under Artistic License 2.0.
 You may contact the author of this code, Waseem Hussain at <waseem.hussain@ul.edu>; <waseemhussain907@gmail.com>
 # DOI
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1422835.svg)](https://doi.org/10.5281/zenodo.1422835)
+
+# Manuscript details
+The manuscript describing the application is published in Plant Direct Jouranl and can be found here https://doi-org.libproxy.unl.edu/10.1002/pld3.91
