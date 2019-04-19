@@ -87,7 +87,7 @@ column(8,
           style = "font-size: 18px"),
          hr(),
       tags$blockquote(
-        tags$p(strong('How to cite ShinyAIM:'), "Hussain W., Campbell M., Walia H., Morota G. (2018) ShinyAIM: Shiny-based Application of Interactive Manhattan Plots for Longitudinal Genome-Wide Association Studies. bioRxiv."), 
+        tags$p(strong('How to cite ShinyAIM:'), "Hussain, W., Campbell M., Walia H., Morota G. (2018). ShinyAIM: Shiny-based Application of Interactive Manhattan Plots for Longitudinal Genome-Wide Association Studies.", tags$i("Plant Direct"), tags$a (href="https://doi.org/10.1002/pld3.91","https://doi.org/10.1002/pld3.91")), 
         style = "font-size: 18px"),
       hr(),
       h3(strong('Contact Information and Help:')),
