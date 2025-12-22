@@ -1,2 +1,12 @@
 
 ShinyAIM.R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+.DS_Store
+rsconnect/
+packrat/
+.httr-oauth
+*.log

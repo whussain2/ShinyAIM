@@ -17,10 +17,15 @@ column(8,
        #br(),
        tags$blockquote(
          tags$div(tags$ul(
-           tags$li("Interactive Manhattan Plots."),
-           tags$li("Manhattan Grid Plot."),
-           tags$li("Comparison of Associated Markers."),
-           tags$li("Phenotypic Data Visualization: Interactive Histograms, Density Plots, and Box Plots.")),
+           tags$li("Interactive Manhattan Plots with customizable color schemes and statistical corrections."),
+           tags$li("QQ Plots with genomic inflation factor (λ) calculation."),
+           tags$li("Manhattan Grid Plot with data preprocessing options."),
+           tags$li("Comparison of Associated Markers across timepoints."),
+           tags$li("Phenotypic Data Visualization: Interactive Histograms, Density Plots, and Box Plots."),
+           tags$li("Data Management: Save/load sessions and compare multiple GWAS runs."),
+           tags$li("High-resolution plot export (PNG, PDF, SVG)."),
+           tags$li("Multiple testing corrections (Bonferroni, FDR)."),
+           tags$li("Interactive data tables with search and filter capabilities.")),
            style = "font-size: 18px")
          ),
     hr(),
@@ -49,10 +54,19 @@ column(8,
           ),
           tags$li("For each main tab panel separate input files needs to be uploaded. Sample files can be used as examples to get familiar with the application."),
           tags$li("In Manhattan Plot panel, once the input file in right format is uploaded, users need to choose the separator value in the file. Once users choose the separator value, the time points will be automatically updated in Choose Time point box. Users can select any time point and Interactive Manhattan plot will be automatically generated in left main panel, and users can interact with it to get more information. Users can choose the significant threshold level by moving slider input bar."),
-          tags$li("In Interactive Manhattan Plot tab, user's can also see the list of top SNPs in table format by checking Display in Table Significant SNPs box. Once checked, List of SNPs will be displayed with highest p values on top. Users can use slider input to control the number of SNPs displayed in table."),
-          tags$li("For Manhattan Grid Plot tab, once input file is uploaded and separator value choose, the combined Manhattan plot will be automatically generated in left main panel. Users can choose the significant threshold level and also number of columns in the combined/grid plot. Note: CSV file for Manhattan plot and combined Manhattan plot is same, however, they need to be uploaded separately."),
+          tags$li(tags$strong("New Features in Manhattan Plot:"), 
+                  tags$ul(
+                    tags$li("Color Scheme Selection: Choose from Default, Colorblind-Friendly, Grayscale, or Custom color palettes."),
+                    tags$li("Multiple Testing Corrections: Apply Bonferroni or FDR (Benjamini-Hochberg) corrections."),
+                    tags$li("Summary Statistics: View total markers, significant markers, genomic inflation factor (λ), and significance thresholds."),
+                    tags$li("Export Options: Download plots in PNG, PDF, or SVG format with high resolution.")
+                  )),
+          tags$li("In Interactive Manhattan Plot tab, user's can also see the list of top SNPs in table format by checking Display in Table Significant SNPs box. Once checked, an interactive searchable and sortable table will be displayed with highest p values on top. Users can use slider input to control the number of SNPs displayed in table."),
+          tags$li(tags$strong("QQ Plot Tab:"), "Assess the distribution of observed p-values against expected values. The genomic inflation factor (λ) helps identify population stratification or test statistic inflation. Values near 1.0 indicate well-controlled statistics."),
+          tags$li("For Manhattan Grid Plot tab, once input file is uploaded and separator value choose, the combined Manhattan plot will be automatically generated in left main panel. Users can choose the significant threshold level and also number of columns in the combined/grid plot. Data preprocessing options allow filtering by MAF and missing rate thresholds. Note: CSV file for Manhattan plot and combined Manhattan plot is same, however, they need to be uploaded separately."),
           tags$li("For Comparison of Associated Markers tab, It uses the same data file as uploaded for Manhattan Grid Plot so no need to upload the data for this tab Panel. Once tab Panel is clicked,  plot will be automatically displayed in right panel. To modify or change the plot based on top p value, directly enter the value by typing in the box."),
-          tags$li("For Phenotypic Data Visualization, once the right CVS file is uploaded and file separator value is chosen, the time point will be automatically updated. The users can select the time point, and choose the time point to see the histogram and density plots. Users can also select box plot type to see the trend and variation across all the time points. All the plot types are interactive, and users can interact to get more information   .")
+          tags$li(tags$strong("Data Management Tab:"), "Save your current analysis session to an RDS file for later use. Load previously saved sessions to continue your work. Compare results from two different GWAS runs side-by-side to identify consistent associations."),
+          tags$li("For Phenotypic Data Visualization, once the right CVS file is uploaded and file separator value is chosen, the time point will be automatically updated. The users can select the time point, and choose the time point to see the histogram and density plots. Users can also select box plot type to see the trend and variation across all the time points. All the plot types are interactive, and users can interact to get more information.")
           
     
           
